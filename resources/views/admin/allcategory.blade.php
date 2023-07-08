@@ -25,7 +25,7 @@
                 <td>{{$category->slug}}</td>
                 <td>
                     <a href="{{route('editCategory',$category->id)}}" class="btn btn-primary" >Edit</a>
-                    <a href="#" class="btn btn-warning" >Delete</a>
+                    <a onclick="return confirm('Are you sure?')" href="{{route('deleteCategory',$category->id)}}" class="btn btn-warning" >Delete</a>
                 </td>
             </tr>
         @endforeach

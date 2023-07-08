@@ -33,9 +33,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/admin/dashboard/store-category',[\App\Http\Controllers\CategoryController::class,'storeCategory'])->name('storeCategory');
     Route::get('/admin/dashboard/edit-category/{id}',[\App\Http\Controllers\CategoryController::class,'editCategory'])->name('editCategory');
     Route::post('/admin/dashboard/update-category',[\App\Http\Controllers\CategoryController::class,'updateCategory'])->name('updateCategory');
+    Route::get('/admin/dashboard/delete-category/{id}',[\App\Http\Controllers\CategoryController::class,'deleteCategory'])->name('deleteCategory');
 
     Route::get('/admin/dashboard/allsubcategory',[\App\Http\Controllers\SubCategoryController::class,'allSubCategory'])->name('allSubCategory');
     Route::get('/admin/dashboard/addsubcategory',[\App\Http\Controllers\SubCategoryController::class,'addSubCategory'])->name('addSubCategory');
+    Route::post('/admin/dashboard/store-subcategory',[\App\Http\Controllers\SubCategoryController::class,'storeSubCategory'])->name('storeSubCategory');
 
     Route::get('/admin/dashboard/allproduct',[\App\Http\Controllers\ProductController::class,'allProduct'])->name('allProduct');
     Route::get('/admin/dashboard/addproduct',[\App\Http\Controllers\ProductController::class,'addProduct'])->name('addProduct');

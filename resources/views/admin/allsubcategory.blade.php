@@ -1,6 +1,11 @@
 @extends('admin.layouts.template')
 @section('content')
     <h2>All Sub Category page</h2>
+    @if(session()->has('message'))
+        <div class="alert alert-success">
+            {{session()->get('message')}}
+        </div>
+    @endif
     <table class="table table-dark table-striped">
         <thead>
         <tr>
@@ -12,16 +17,18 @@
         </tr>
         </thead>
         <tbody>
+        @foreach($allsubcategories as $allsubcategory)
         <tr>
-            <th scope="row">1</th>
-            <td>Fan</td>
-            <td>Electronics</td>
-            <td>50</td>
+            <th scope="row">{{ $allsubcategory->id }}</th>
+            <td>{{ $allsubcategory->subcategory_name }}</td>
+            <td>{{ $allsubcategory->category_name }}</td>
+            <td>{{ $allsubcategory->product_count }}</td>
             <td>
                 <a href="#" class="btn btn-primary" >Edit</a>
                 <a href="#" class="btn btn-warning" >Delete</a>
             </td>
         </tr>
+        @endforeach
         </tbody>
     </table>
 @endsection
