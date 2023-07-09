@@ -1,6 +1,11 @@
 @extends('admin.layouts.template')
 @section('content')
     <h2>All Prodcut page</h2>
+    @if(session()->has('message'))
+        <div class="alert alert-success">
+            {{session()->get('message')}}
+        </div>
+    @endif
     <table class="table table-dark table-striped">
         <thead>
         <tr>

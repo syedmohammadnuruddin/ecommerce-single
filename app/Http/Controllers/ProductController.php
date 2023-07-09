@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\category;
+use App\Models\Product;
 use App\Models\subcategory;
 use Illuminate\Http\Request;
 
@@ -37,5 +38,24 @@ class ProductController extends Controller
 
         $category_name = category::where('id',$category_id)->value('category_name');
         $subcategory_name = subcategory::where('id',$subcategory_id)->value('subcategory_name');
+
+        Product::insert([
+           'product_name'=>$request->product_name,
+           'product_short_des'=>$request->product_short_des,
+           'product_long_des'=>$request->product_long_des,
+           'price'=>$request->price,
+           'quantity'=>$request->quantity,
+           'product_category_name'=>$category_name,
+           'product_subcategory_name'=>$subcategory_name,
+           'product_category_id'=>$request->product_category_id,
+           'product_subcategory_id'=>$request->product_subcategory_id,
+           'product_img'=>$img_url,
+            'slug'=>strtolower(str_replace(' ','-',$request->product_name))
+        ]);
+
+        category::where('id',$category_id)->increment('product_count',1);
+        subcategory::where('id',$subcategory_id)->increment('product_count',1);
+
+        return redirect()->route('allProduct')->with('message','Product Added Successfully');
     }
 }
