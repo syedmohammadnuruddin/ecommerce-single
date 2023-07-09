@@ -24,8 +24,8 @@
             <td>{{ $allsubcategory->category_name }}</td>
             <td>{{ $allsubcategory->product_count }}</td>
             <td>
-                <a href="#" class="btn btn-primary" >Edit</a>
-                <a href="#" class="btn btn-warning" >Delete</a>
+                <a href="{{route('editSubCat',$allsubcategory->id)}}" class="btn btn-primary" >Edit</a>
+                <a href="{{route('deleteSubCat',$allsubcategory->id)}}" class="btn btn-warning" >Delete</a>
             </td>
         </tr>
         @endforeach
