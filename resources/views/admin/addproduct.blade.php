@@ -4,6 +4,15 @@
         <div class="row">
             <div class="col-12">
                 <h2>Add Product</h2>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <form method="post" enctype="multipart/form-data" action="{{route('storeProduct')}}">
                     @csrf
                     <input type="text" class="form-control" id="product_name" name="product_name" placeholder="Product Name"><br>

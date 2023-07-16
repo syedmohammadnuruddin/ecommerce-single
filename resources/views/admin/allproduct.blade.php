@@ -17,16 +17,21 @@
         </tr>
         </thead>
         <tbody>
+        @foreach($products as $product)
         <tr>
-            <th scope="row">1</th>
-            <td>JAMUNA FAN</td>
-            <td></td>
-            <td>1500</td>
+            <th scope="row">{{$product->id}}</th>
+            <td>{{$product->product_name}}</td>
             <td>
-                <a href="#" class="btn btn-primary" >Edit</a>
-                <a href="#" class="btn btn-warning" >Delete</a>
+                <img style="height:100px;" src="{{asset($product->product_img)}}"><br>
+                <a href="{{route('editProductImage', $product->id)}}" class="btn btn-primary" >Edit Image</a>
+            </td>
+            <td>{{$product->price}}</td>
+            <td>
+                <a href="{{route('editProduct', $product->id)}}" class="btn btn-primary" >Edit</a>
+                <a href="{{route('deleteProduct', $product->id)}}" class="btn btn-warning" >Delete</a>
             </td>
         </tr>
+        @endforeach
         </tbody>
     </table>
 @endsection

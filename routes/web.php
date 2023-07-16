@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -45,6 +46,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/dashboard/allproduct',[\App\Http\Controllers\ProductController::class,'allProduct'])->name('allProduct');
     Route::get('/admin/dashboard/addproduct',[\App\Http\Controllers\ProductController::class,'addProduct'])->name('addProduct');
     Route::post('/admin/dashboard/store-product',[\App\Http\Controllers\ProductController::class,'storeProduct'])->name('storeProduct');
+    Route::get('/admin/dashboard/edit-product-image/{id}',[\App\Http\Controllers\ProductController::class,'editProductImage'])->name('editProductImage');
+    Route::post('/admin/dashboard/update-product-image',[\App\Http\Controllers\ProductController::class,'updateProductImage'])->name('updateProductImage');
+    Route::get('/admin/dashboard/edit-product/{id}',[\App\Http\Controllers\ProductController::class,'editProduct'])->name('editProduct');
+    Route::post('/admin/dashboard/update-product',[\App\Http\Controllers\ProductController::class,'updateProduct'])->name('updateProduct');
+    Route::get('/admin/dashboard/delete-product/{id}',[\App\Http\Controllers\ProductController::class,'deleteProduct'])->name('deleteProduct');
+
 
     Route::get('/admin/dashboard/order',[\App\Http\Controllers\OrderController::class,'order'])->name('order');
 });
